@@ -1,9 +1,11 @@
-use super::msg::Msg;
 use anyhow::Result;
 use bytes::Bytes;
 use rumqttc::{AsyncClient, QoS};
 
-use super::state::{Eta, Etd, State, Status};
+use super::{
+    msg::Msg,
+    state::{Eta, Etd, State, Status},
+};
 
 pub const TOPIC_STATUS: &str = "/presence/status";
 pub const TOPIC_STATE: &str = "/presence/state";
