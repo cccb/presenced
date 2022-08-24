@@ -70,20 +70,16 @@ impl Service {
             Some(Msg::Status(status)) => self.handle_status(status).await?,
             None => {}
         };
-
         Ok(())
     }
 
     /// Start the MQTT presence service
     pub async fn start(&self) -> Result<()> {
-        println!("starting mqtt presence service");
-
         // Subscribe to all required topics
         self.client.subscribe(TOPIC_STATE, QoS::AtMostOnce).await?;
         self.client.subscribe(TOPIC_STATUS, QoS::AtMostOnce).await?;
         self.client.subscribe(TOPIC_ETA, QoS::AtMostOnce).await?;
         self.client.subscribe(TOPIC_ETD, QoS::AtMostOnce).await?;
-
         Ok(())
     }
 }

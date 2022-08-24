@@ -28,7 +28,7 @@ impl Etd {
     }
 }
 
-/// Person with Name and optional message?
+/// Person with name and optional message?
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Person(pub String, pub Option<String>);
 
@@ -136,9 +136,10 @@ impl State {
     pub fn set_status(&mut self, status: Status) -> bool {
         if self.status != status {
             self.status = status;
-            return true;
+            true
+        } else {
+            false
         }
-        false
     }
 
     /// Decode from MQTT message
